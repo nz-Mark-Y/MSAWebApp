@@ -24,13 +24,28 @@ h4 {
     margin-top: 0px;
 }
 
+p { 
+    -webkit-text-fill-color: #d6d6d6;
+}
+
 #currencyBox {
     margin-top: 10px;
     margin-left: 10px;
     margin-bottom: 10px;
+    margin-right: 10px;
     background-color: #d6d6d6;
     padding-left: 10px;
     padding-top: 10px;
-    width: 300px;
+    float: left;
     height: 90%;
+    width: 20%;
+}
+
+#selectionBox {
+    background-color: black;
+    margin-top: 10px;;
+    padding-left: 10px;
+    padding-top: 10px;
+    float: left;
+    height: 500px;
 }
