@@ -1,0 +1,26 @@
+body,html {
+  margin:0;
+  padding:0;
+  background-color: black;
+  font-family: "Verdana", "Geneva", sans-serif;
+}
+
+#header {
+    top: 0px;
+    left:0px;
+    padding-left: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #006080;
+}
+
+h1 {
+    -webkit-text-fill-color: #d6d6d6;
+    margin: 5px;
+}
+
+#currencyBox {
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: #d6d6d6;
+}
