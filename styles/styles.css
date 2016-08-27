@@ -13,6 +13,8 @@ body,html {
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: #006080;
+    border: solid #014961;
+    border-width: 0 0 2px 0;
 }
 
 h1 {
@@ -37,6 +39,7 @@ p {
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    padding-right: 10px;
     float: left;
     width: 20%;
 }
@@ -48,4 +51,15 @@ p {
     padding-top: 10px;
     float: left;
     height: 500px;
+}
+
+#goButton {
+    margin: 10px;
+    margin-top: 30px;
+    padding: 5px;
+    font-size: 18px;
+    color: #d6d6d6;
+    background-color: #006080;
+    border: solid #014961;
+    border-width: 2px;
 }
