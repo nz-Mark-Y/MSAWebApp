@@ -19,7 +19,8 @@ function init() {
         if ((inputString === "") || (!isNumber)) {
             alert("Please enter an amount")
         } else {
-            var rate : number = getRate();
+            var rate : number = 0;
+            rate = currencyData[currencySelected];
             var outputAmount : number = 0;
             if (conversionSelected === "setLocal") {
                 outputAmount = parseInt(inputString)*rate;
@@ -63,32 +64,4 @@ function getData() {
 	};
     xmlhttp.open("GET", "http://api.fixer.io/latest?base=NZD");
     xmlhttp.send();
-}
-
-//Pulls the exchange rate out of the currencyData object
-function getRate() {
-    var rate : number = 0;
-    if (currencySelected === "AUD") {rate = currencyData['AUD'];}
-    if (currencySelected === "BRL") {rate =currencyData['BRL'];}
-    if (currencySelected === "GBP") {rate =currencyData['GBP'];}
-    if (currencySelected === "CAD") {rate =currencyData['CAD'];}
-    if (currencySelected === "CNY") {rate =currencyData['CNY'];}
-    if (currencySelected === "DKK") {rate =currencyData['DKK'];}
-    if (currencySelected === "EUR") {rate =currencyData['EUR'];}
-    if (currencySelected === "HKD") {rate =currencyData['HKD'];}
-    if (currencySelected === "INR") {rate =currencyData['INR'];}
-    if (currencySelected === "IDR") {rate =currencyData['IDR'];}
-    if (currencySelected === "ILS") {rate =currencyData['ILS'];}
-    if (currencySelected === "JPY") {rate =currencyData['JPY'];}
-    if (currencySelected === "MYR") {rate =currencyData['MYR'];}
-    if (currencySelected === "MXN") {rate =currencyData['MXN'];}
-    if (currencySelected === "PHP") {rate =currencyData['PHP'];}
-    if (currencySelected === "RUB") {rate =currencyData['RUB'];}
-    if (currencySelected === "SGD") {rate =currencyData['SGD'];}
-    if (currencySelected === "ZAR") {rate =currencyData['ZAR'];}
-    if (currencySelected === "KRW") {rate =currencyData['KRW'];}
-    if (currencySelected === "CHF") {rate =currencyData['CHF'];}
-    if (currencySelected === "THB") {rate =currencyData['THB'];}
-    if (currencySelected === "USD") {rate =currencyData['USD'];}
-    return rate;
 }
