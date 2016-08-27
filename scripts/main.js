@@ -1,6 +1,7 @@
 var currencySelected = "AUD";
 var conversionSelected = "setLocal";
-var currencyArray;
+var currencyData;
+// Runs on the loading of the page
 function init() {
     getData();
     document.getElementById("currencyForm").addEventListener("click", function () {
@@ -18,10 +19,22 @@ function init() {
             alert("Please enter an amount");
         }
         else {
-            console.log(currencyArray);
+            var rate = getRate();
+            var outputAmount = 0;
+            if (conversionSelected === "setLocal") {
+                outputAmount = parseInt(inputString) * rate;
+            }
+            else if (conversionSelected === "setForeign") {
+                outputAmount = parseInt(inputString) / rate;
+            }
+            else {
+                outputAmount = (1 / rate) * parseInt(inputString);
+            }
+            document.getElementById("output").innerHTML = outputAmount.toString();
         }
     });
 }
+// Sets the placeholder text of the input text box
 function setPlaceholderText() {
     conversionSelected = document.querySelector('input[name=conversion]:checked').value;
     if (conversionSelected === "setLocal") {
@@ -34,6 +47,7 @@ function setPlaceholderText() {
         document.getElementById("inputBox").placeholder = "Enter how much " + currencySelected + " you want to sell";
     }
 }
+// XMLHttpRequest which obtains JSON data from the fixer.io API and then parses it into an array
 function getData() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
@@ -41,7 +55,7 @@ function getData() {
             if (xmlhttp.status == 200) {
                 var dataArray;
                 dataArray = JSON.parse(xmlhttp.responseText);
-                currencyArray = dataArray.rates;
+                currencyData = dataArray.rates;
             }
             else if (xmlhttp.status == 400) {
                 alert('There was an error 400');
@@ -53,4 +67,15 @@ function getData() {
     };
     xmlhttp.open("GET", "http://api.fixer.io/latest?base=NZD");
     xmlhttp.send();
+}
+//Pulls the exchange rate out of the currencyData object
+function getRate() {
+    var rate = 0;
+    if (currencySelected === "AUD") {
+        rate = currencyData['AUD'];
+    }
+    if (currencySelected === "GBP") {
+        rate = currencyData['GBP'];
+    }
+    return rate;
 }
