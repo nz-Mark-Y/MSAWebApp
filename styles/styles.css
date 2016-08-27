@@ -20,7 +20,7 @@ h1 {
     margin: 5px;
 }
 
-h4 {
+#currencyTitle {
     margin-top: 0px;
 }
 
@@ -36,8 +36,8 @@ p {
     background-color: #d6d6d6;
     padding-left: 10px;
     padding-top: 10px;
+    padding-bottom: 10px;
     float: left;
-    height: 90%;
     width: 20%;
 }
 
