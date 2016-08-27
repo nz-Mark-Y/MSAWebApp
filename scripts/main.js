@@ -1,6 +1,8 @@
 var currencySelected = "AUD";
 var conversionSelected = "setLocal";
+var currencyArray;
 function init() {
+    getData();
     document.getElementById("currencyForm").addEventListener("click", function () {
         currencySelected = document.querySelector('input[name=currency]:checked').value;
         document.getElementById("statusText").innerHTML = "You have selected " + currencySelected + ".";
@@ -10,11 +12,13 @@ function init() {
         setPlaceholderText();
     });
     document.getElementById("goButton").addEventListener("click", function () {
-        if (document.getElementById("inputBox").value === "") {
+        var inputString = document.getElementById("inputBox").value;
+        var isNumber = /^[0-9.]+$/.test(inputString);
+        if ((inputString === "") || (!isNumber)) {
             alert("Please enter an amount");
         }
         else {
-            getData();
+            console.log(currencyArray);
         }
     });
 }
@@ -33,10 +37,11 @@ function setPlaceholderText() {
 function getData() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
-        // http://www.w3schools.com/xml/dom_httprequest.asp
         if (xmlhttp.readyState == 4) {
             if (xmlhttp.status == 200) {
-                console.log(JSON.parse(xmlhttp.responseText));
+                var dataArray;
+                dataArray = JSON.parse(xmlhttp.responseText);
+                currencyArray = dataArray.rates;
             }
             else if (xmlhttp.status == 400) {
                 alert('There was an error 400');
