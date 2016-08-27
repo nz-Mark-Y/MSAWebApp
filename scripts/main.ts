@@ -11,7 +11,11 @@ function init() {
          setPlaceholderText();
     });
     document.getElementById("goButton").addEventListener("click", function(){
-         alert("You want to " + conversionSelected + " with " + currencySelected);
+        if (document.getElementById("inputBox").value === "") {
+            alert("Please enter an amount")
+        } else {
+            getData();
+        }
     });
 }
 
@@ -24,4 +28,22 @@ function setPlaceholderText () {
     } else {
         document.getElementById("inputBox").placeholder = "Enter how much " + currencySelected + " you want to sell";
     }
+}
+
+function getData() {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		// http://www.w3schools.com/xml/dom_httprequest.asp
+    	if (xmlhttp.readyState == 4 ) {
+        	if (xmlhttp.status == 200) {
+        		console.log(JSON.parse(xmlhttp.responseText));
+        	} else if (xmlhttp.status == 400) {
+            	alert('There was an error 400');
+        	} else {
+            	alert('Something else other than 200 was returned');
+        	}
+    	}
+	};
+    xmlhttp.open("GET", "http://api.fixer.io/latest?base=NZD");
+    xmlhttp.send();
 }
