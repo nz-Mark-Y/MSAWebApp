@@ -51,10 +51,12 @@
             <th width="70%">
                 <div id="selectionBox"> 
                     <p id="statusText">You have selected AUD.</p>
-                    <input id = "inputBox" type="text" name="amount" placeholder="Enter how much NZD you want to convert to AUD">
+                    <input id = "inputBox" type="text" name="amount" placeholder="Enter how much NZD you want to convert to AUD" onkeyup="inputKeyUp(event)">
                     <div style="text-align: center;">
                         <input id="goButton" type="button" value="Let's Go">
                     </div>
+                </div>
+                <div id="outputBox"> 
                     <h2 id="output"></h2>
                 </div>
             </th>

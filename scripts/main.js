@@ -13,27 +13,40 @@ function init() {
         setPlaceholderText();
     });
     document.getElementById("goButton").addEventListener("click", function () {
-        var inputString = document.getElementById("inputBox").value;
-        var isNumber = /^[0-9.]+$/.test(inputString);
-        if ((inputString === "") || (!isNumber)) {
-            alert("Please enter an amount");
+        calcAndDisplay();
+    });
+}
+//Allows the use of enter key rather than the button
+function inputKeyUp(e) {
+    e.which = e.which || e.keyCode;
+    if (e.which == 13) {
+        calcAndDisplay();
+    }
+}
+// Calculates and displays the result
+function calcAndDisplay() {
+    var inputString = document.getElementById("inputBox").value;
+    var isNumber = /^[0-9.]+$/.test(inputString);
+    if ((inputString === "") || (!isNumber)) {
+        document.getElementById("output").innerHTML = "Please enter an amount";
+    }
+    else {
+        var rate = 0;
+        rate = currencyData[currencySelected];
+        var outputAmount;
+        if (conversionSelected === "setLocal") {
+            outputAmount = (parseInt(inputString) * rate).toFixed(2);
+            document.getElementById("output").innerHTML = "$" + inputString + " NZD will buy you " + "$" + outputAmount + " " + currencySelected + ".";
+        }
+        else if (conversionSelected === "setForeign") {
+            outputAmount = (parseInt(inputString) / rate).toFixed(2);
+            document.getElementById("output").innerHTML = "$" + inputString + " " + currencySelected + " will cost you " + "$" + outputAmount + " NZD.";
         }
         else {
-            var rate = 0;
-            rate = currencyData[currencySelected];
-            var outputAmount = 0;
-            if (conversionSelected === "setLocal") {
-                outputAmount = parseInt(inputString) * rate;
-            }
-            else if (conversionSelected === "setForeign") {
-                outputAmount = parseInt(inputString) / rate;
-            }
-            else {
-                outputAmount = (1 / rate) * parseInt(inputString);
-            }
-            document.getElementById("output").innerHTML = outputAmount.toString();
+            outputAmount = ((1 / rate) * parseInt(inputString)).toFixed(2);
+            document.getElementById("output").innerHTML = "$" + inputString + " " + currencySelected + " will buy you " + "$" + outputAmount + " NZD.";
         }
-    });
+    }
 }
 // Sets the placeholder text of the input text box
 function setPlaceholderText() {
