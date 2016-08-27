@@ -1,7 +1,7 @@
 # MSAWebApp
 Web App for Module 2 of MSA
 
-Utilises the ASB Exchange Rate API
+Utilises the fixer.io JSON API for exchange rates. Rates published by the European Central Bank. 
 
 User selects a currency
 "How much [Foreign Currency] can I buy with this amount of NZD?"

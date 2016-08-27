@@ -27,30 +27,17 @@ h1 {
 }
 
 p { 
-    -webkit-text-fill-color: #d6d6d6;
+    -webkit-text-fill-color: #000000;
 }
 
 #currencyBox {
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;
     background-color: #d6d6d6;
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    float: left;
-    width: 20%;
+    padding: 10px;
 }
 
 #selectionBox {
-    background-color: black;
-    margin-top: 10px;;
-    padding-left: 10px;
-    padding-top: 10px;
-    float: left;
-    height: 500px;
+    background-color: #d6d6d6;
+    padding: 10px;
 }
 
 #goButton {
@@ -62,4 +49,13 @@ p {
     background-color: #006080;
     border: solid #014961;
     border-width: 2px;
+}
+
+#table1 {
+    width: 100%;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
 }
