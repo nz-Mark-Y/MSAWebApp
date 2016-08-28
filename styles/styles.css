@@ -10,16 +10,18 @@ body,html {
     top: 0px;
     left:0px;
     padding-left: 25px;
-    padding-top: 10px;
-    padding-bottom: 10px;
     background-color: #006080;
     border: solid #014961;
     border-width: 0 0 2px 0;
 }
 
+#headerTable {
+    width: 100%;
+}
+
 h1 {
     -webkit-text-fill-color: #d6d6d6;
-    margin: 5px;
+    margin: 0px;
 }
 
 #currencyTitle {
@@ -67,6 +69,11 @@ th, td {
     padding: 10px;
     text-align: left;
 }
+
+.headerCol {
+    padding: 0px;
+}
+
 
 #inputBox {
     width: 400px;
