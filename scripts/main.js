@@ -1,3 +1,4 @@
+var baseCurrency = "NZD";
 var currencySelected = "AUD";
 var conversionSelected = "setLocal";
 var currencyData;
@@ -79,6 +80,6 @@ function getData() {
             }
         }
     };
-    xmlhttp.open("GET", "http://api.fixer.io/latest?base=NZD");
+    xmlhttp.open("GET", "http://api.fixer.io/latest?base=" + baseCurrency);
     xmlhttp.send();
 }
